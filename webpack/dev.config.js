@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
+var poststylus = require('poststylus');
+
 
 var BASE_DIR = path.resolve(__dirname, '..');
 
@@ -13,7 +15,7 @@ module.exports = {
   output: {
     path: BASE_DIR + '/dist',
     public_path: '/',
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   devServer: {
     contentBase: './dist',
@@ -21,14 +23,36 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'react-hot!babel-loader'
-    }],
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'react-hot!babel'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css!postcss'
+      },
+      {
+        test: /\.styl$/,
+        loader: 'style!css!stylus'
+      },
+      {
+        test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+        exclude: /node_modules/,
+        loader: 'file?name=[name]-[hash].[ext]'
+      }
+    ],
+  },
+  stylus: {
+    use: [
+      require('nib')(),
+      poststylus(['autoprefixer'])
+    ],
+    import: ['~nib/lib/nib/index.styl']
   },
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.styl'],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
