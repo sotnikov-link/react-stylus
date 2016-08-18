@@ -9,4 +9,4 @@ class MyClass {
 
 const myObj = new MyClass(10, 5);
 
-console.log('Hi!', myObj.getString());
+console.log("Hi!", myObj.getString());
