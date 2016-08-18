@@ -1,41 +1,33 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
+  'extends': 'eslint-config-airbnb',
+  'env': {
+    'browser': true,
+    'node': true,
+    'mocha': true
   },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true
-    },
-    "sourceType": "module"
-  },
-  "plugins": [
-    "react"
-  ],
-  "rules": {
-    "indent": [
-      "error",
-      2
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "double"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "no-console": 0,
-    "no-alert": 0,
-    "new-cap": [2, {
-      "capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"]
+  'rules': {
+    'react/no-multi-comp': 0,
+    'import/default': 0,
+    'import/no-duplicates': 0,
+    'import/named': 0,
+    'import/namespace': 0,
+    'import/no-unresolved': 0,
+    'import/no-named-as-default': 2,
+    'comma-dangle': 0,  // not sure why airbnb turned this on. gross!
+    'indent': [2, 2, {'SwitchCase': 1}],
+    'no-console': 0,
+    'no-alert': 0,
+    'new-cap': [2, {
+      'capIsNewExceptions': ['Immutable.Map', 'Immutable.Set', 'Immutable.List']
     }]
+  },
+  'plugins': [
+    'react', 'import'
+  ],
+  'settings': {
+    'import/parser': 'babel-eslint',
+    'import/resolve': {
+      'moduleDirectory': ['node_modules', 'src']
+    }
   }
 };

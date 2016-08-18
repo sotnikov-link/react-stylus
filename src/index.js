@@ -1,12 +1,9 @@
-class MyClass {
-  constructor(a, b) {
-    this.a = a;
-    this.b = b;
-  }
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Header from './components/Header';
 
-  getString() { return String(this.a + this.b); }
-}
 
-const myObj = new MyClass(10, 5);
-
-console.log("Hi!", myObj.getString());
+ReactDOM.render(
+  <Header/>,
+  document.getElementById('app')
+);
