@@ -13,7 +13,7 @@ module.exports = {
     './src/index.js'
   ],
   output: {
-    path: BASE_DIR + '/dist',
+    path: BASE_DIR + '/dist/bundle',
     public_path: '/',
     filename: '[name].js',
   },
@@ -31,11 +31,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css!postcss'
+        loader: 'style!css'
       },
       {
         test: /\.styl$/,
-        loader: 'style!css!stylus'
+        loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus'
       },
       {
         test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
