@@ -1,9 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
 var poststylus = require('poststylus');
-
-
 var BASE_DIR = path.resolve(__dirname, '..');
+
 
 module.exports = {
   context: BASE_DIR,
@@ -27,7 +26,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'react-hot!babel'
+        loaders: ['react-hot-loader/webpack', 'babel']
       },
       {
         test: /\.css$/,

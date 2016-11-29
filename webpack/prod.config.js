@@ -1,6 +1,6 @@
 var path = require('path');
-
 var BASE_DIR = path.resolve(__dirname, '..');
+
 
 module.exports = {
   context: BASE_DIR,
